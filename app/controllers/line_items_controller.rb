@@ -1,6 +1,7 @@
 class LineItemsController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: [:create]
+  before_action :reset_visit, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
@@ -73,5 +74,12 @@ class LineItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
       params.require(:line_item).permit(:product_id, :cart_id)
+    end
+
+    #Resets visit counter to 0 when user adds item to cart
+    def reset_visit
+      unless session[:count].nil?
+        session[:count] = 0
+      end
     end
 end

@@ -2,6 +2,10 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
+<% if session[:count] > 4 %>
+	<p><%= "Welcome!  This is your " + (session[:count] + 1).ordinalize + " visit" %></p>
+<% end %>
+
 <h1>Your Pragmatic Catalog</h1>
 
 <% cache ['store', Product.latest] do %>
