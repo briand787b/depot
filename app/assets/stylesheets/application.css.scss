@@ -46,6 +46,11 @@
   }
 
   #side {
+
+    #remove-btn {
+      display: none;
+    }
+
     float: left;
     padding: 1em 2em;
     width: 13em;
